@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0a0a0b">
+<title>Agent Board Auto Mode — Dual-Window Pacing — OpenPaper 論文館</title>
+<meta name="description" content="Working Paper v0.1 (2026-11-22): pacing agent work under Claude's nested 5-hour and 7-day quotas — a dual-constraint control problem solved with token buckets, MPC and behaviour forecasting. The Agent Board's default mode specification.">
+<meta property="og:title" content="Agent Board Auto Mode — Dual-Window Pacing — OpenPaper 論文館">
+<meta property="og:description" content="Working Paper v0.1 (2026-11-22): pacing agent work under Claude's nested 5-hour and 7-day quotas — a dual-constraint control problem solved with token buckets, MPC and behaviour forecasting. The Agent Board's default mode specification.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://openpaper.dawnstudio.app/papers/agent-board-auto-mode.html">
+<meta property="og:site_name" content="OpenPaper">
+<meta property="og:image" content="https://openpaper.dawnstudio.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="OpenPaper 論文館 — Dawn's open research-paper line">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agent Board Auto Mode — Dual-Window Pacing — OpenPaper 論文館">
+<meta name="twitter:description" content="Working Paper v0.1 (2026-11-22): pacing agent work under Claude's nested 5-hour and 7-day quotas — a dual-constraint control problem solved with token buckets, MPC and behaviour forecasting. The Agent Board's default mode specification.">
+<meta name="twitter:image" content="https://openpaper.dawnstudio.app/og.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<style>
+:root{--bg:#0a0a0b;--panel:#131315;--panel2:#17171a;--line:#26262b;--text:#f5f2ee;--muted:#a8a29b;
+--accent:#e8590c;--accent-soft:#ff8a3d;--good:#69b56b;--radius:16px;
+--sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Noto Sans CJK TC",sans-serif;
+--serif:Georgia,"Times New Roman","Noto Serif TC","Noto Serif CJK TC",serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.55}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+a{color:var(--accent-soft)}
+header.utility{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-bottom:1px solid var(--line)}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:inherit;font-weight:700;letter-spacing:.02em;min-width:0}
+.brand img{width:40px;height:40px;flex:0 0 auto}
+.brand span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand .hall{color:var(--muted);font-weight:500;font-size:.85rem}
+.lang-switch{display:inline-flex;padding:3px;border:1px solid var(--line);border-radius:999px;background:var(--panel);flex:0 0 auto}
+.lang-switch button{min-width:48px;min-height:34px;padding:5px 12px;border:0;border-radius:999px;background:transparent;color:var(--muted);cursor:pointer;font:600 .88rem var(--sans)}
+.lang-switch button[aria-pressed="true"]{background:var(--text);color:var(--bg)}
+footer{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:26px 34px;border-top:1px solid var(--line);color:var(--muted);font-size:.875rem;margin-top:34px}
+footer p{margin:0}
+footer .links{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center}
+.footer-legal{color:var(--muted);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px}
+.back-top{text-decoration:none;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--line);border-radius:999px;color:var(--text);flex:0 0 auto}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hero{padding:38px 0 8px}
+.hero .mark{width:84px;height:84px}
+.hero h1{font-size:clamp(2.4rem,9vw,3.6rem);line-height:1.05;margin:.35em 0 .25em;font-weight:800;letter-spacing:-.01em}
+.hero .promise{font-family:var(--serif);font-size:clamp(1.12rem,4.6vw,1.4rem);line-height:1.55;color:#e8e2d9;max-width:36em}
+.hero .measure{margin-top:14px;color:var(--muted);font-size:1rem;max-width:38em}
+.hero .measure strong{color:var(--accent-soft);font-weight:700}
+.statusline{margin:26px 0 6px;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--good);border-radius:12px;padding:14px 18px;font-size:.98rem}
+.statusline .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--good);margin-right:9px}
+section.block{padding:20px 0 4px}
+section.block>h2{font-size:clamp(1.45rem,6vw,1.95rem);margin:16px 0 6px;line-height:1.2}
+section.block>p{color:#e8e2d9;max-width:38em}
+section.block>p.sub{color:var(--muted)}
+.paper{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin:0 0 16px}
+.paper .kicker{display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--accent-soft);font-size:.76rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700}
+.paper .status{margin-left:auto;text-transform:none;letter-spacing:0;font-weight:700;font-size:.78rem;border:1px solid var(--line);border-radius:999px;padding:3px 11px;color:var(--muted);max-width:100%}
+.paper .status.checking{color:#e8b34b;border-color:#5a4a22}
+.paper .status.peer{color:var(--good);border-color:#2c4630}
+.paper h3{font-size:1.28rem;margin:.5em 0 .35em;line-height:1.3}
+.paper h3 a{color:var(--text);text-decoration:none}
+.paper h3 a:hover{color:var(--accent-soft)}
+.paper p{color:var(--muted);margin:.3em 0 .8em}
+.paper .src{font-size:.9rem}
+.paper .read{display:inline-block;margin-top:2px;font-weight:700}
+article.full{padding:26px 0 4px}
+article.full h2{font-size:clamp(1.5rem,6vw,2.1rem);line-height:1.25;margin:.2em 0 .4em}
+article.full h3{font-size:1.3rem;margin:1.4em 0 .4em;line-height:1.3}
+article.full h4{font-size:1.12rem;margin:1.3em 0 .35em}
+article.full h5{font-size:1rem;margin:1.2em 0 .3em}
+article.full p,article.full li{font-family:var(--serif);font-size:1.06rem;line-height:1.75;color:#ece7de}
+article.full .meta{color:var(--muted);font-size:.95rem;font-family:var(--sans)}
+article.full code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;background:var(--panel2);padding:1px 5px;border-radius:5px}
+article.full pre{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto}
+article.full pre code{background:none;padding:0;font-size:.85rem;line-height:1.55}
+article.full blockquote{border-left:3px solid var(--accent);margin:1em 0;padding:2px 0 2px 16px}
+article.full blockquote p{color:var(--muted)}
+article.full hr{border:0;border-top:1px solid var(--line);margin:26px 0}
+.twrap{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;min-width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel2)}
+.claimbox{background:linear-gradient(180deg,#17130f,var(--panel));border:1px solid #3d2c1c;border-radius:var(--radius);padding:20px 22px;margin:18px 0}
+.claimbox h3{margin-top:0;font-family:var(--sans)}
+.claimbox p{font-family:var(--sans);font-size:1rem;line-height:1.65}
+.backlink{display:inline-block;margin-top:22px;font-weight:600}
+.sect{margin:20px 0}
+.sect h3{font-family:var(--sans);font-size:1.05rem;color:var(--accent-soft);letter-spacing:.04em;margin:0 0 6px}
+.sect p{margin-top:0}
+@media (max-width:640px){header.utility{min-height:56px}footer{align-items:flex-start;flex-direction:column}
+.paper{padding:17px}.paper .status{margin-left:0}}
+</style>
+</head>
+<body>
+<div class="wrap" id="top">
+  <header class="utility">
+    <a class="brand" href="/" aria-label="OpenPaper home">
+      <img src="/icon-192.png" alt="OpenPaper logo" width="40" height="40">
+      <span>OpenPaper</span> <span class="hall">· 論文館</span>
+    </a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="zh" aria-pressed="false">繁中</button>
+    </div>
+  </header>
+
+  <article class="full">
+    <div class="kicker" style="color:var(--accent-soft);font-size:.76rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700">OpenPaper 論文館</div>
+    <h2>Agent Board Auto Mode — Dual-Window Pacing</h2>
+    <p class="meta">Dawn Studio — Working Paper v0.1, 2026-11-22 (Hector Chan / Emma) · <span class="status" style="border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:.8rem">Working Paper v0.1 · 2026-11-22</span></p>
+    <p class="meta" data-filed></p>
+<h2>Agent Board Auto Mode — Dual-Window Pacing to Maximise the 7-Day Reset Without Tripping the 5-Hour Reset</h2>
+<p><strong>Dawn Studio — Working Paper v0.1, 2026-11-22 (Hector Chan / Emma)</strong> Status: DEFAULT mode specification for the Agent Board. This is the board's auto mode, not an optional feature.</p>
+<h3>Abstract</h3>
+<p>Claude accounts live under two nested quotas: a rolling 5-hour session cap C5 and a fixed 7-day cap C7 (reset at an account-fixed time, shown in Settings &gt; Usage / <code>/usage</code>). Bursting maximises short-term throughput but trips C5 and leaves the agent blocked for hours; idling wastes C7, which expires worthless at reset — use-it-or-lose-it. We formulate Auto Mode as a dual-constraint pacing problem, solve it with a nested token-bucket / leaky-bucket controller driven by Model Predictive Control (MPC), reserve quota for forecast human-directed demand learned from the user's own behaviour, and fill only the provable surplus with elastic, no-pain work — including automatic book study when no repo work is pending. The terminal optimum is exact: in the final 5-hour window before the 7-day reset, C5 and C7 should be exhausted together; before that window, C5 must never bind.</p>
+<h3>1. Problem</h3>
+<p>For each account a, at time t:</p>
+<ul><li>u5(t) = usage in the trailing / current 5h session window, cap C5, reset t5</li><li>u7(t) = usage in the current 7d window, cap C7, reset t7 (fixed per account)</li><li>Constraint (hard, pre-terminal): u5(t) &lt; C5 for all t &lt; t7 − 5h</li><li>Objective: maximise u7(t7⁻) / C7 with <strong>ε = 2% operating margin (Hector 2026-11-22, final: "ε=2% is better")</strong> — three lines, in order: <strong>98% = operating landing target</strong> (all pacing math runs with ε=2%); <strong>99% = absolute hard ceiling</strong>, never crossed (in Hector's words, 99% at cutoff would be "amazing" — but it is the wall's doorstep, not the aim); <strong>100% = never seen</strong> ("seeing 100% is scary" — blocked / failure). Because one in-flight large session can overshoot by several %, the effective dispatch stop is dynamic: stop admitting new auto work at 98% − (cost of the largest admissible job), so the landing, not the admission, sits at ≤98%, with the 98→99 band held purely as overshoot insurance.</li><li>Secondary: never starve human-directed (URGENT/directed) work; never mutate live state with filler work (NO-PAIN class only).</li></ul>
+<p>This is exactly the shape of three giant literatures:</p>
+<ol><li><strong>Network congestion control</strong> — token bucket (burst budget) vs leaky bucket (smooth output); AIMD (Jacobson, TCP) and BBR-style probing for an unknown, drifting capacity.</li><li><strong>Google SRE / Borg</strong> — quota as schedulable capacity; preemptible / batch backfill tasks soak spare capacity and are evicted instantly by priority work; load-shedding and graceful degradation.</li><li><strong>HPC backfill scheduling (Slurm) + queueing theory</strong> — backfill only jobs that provably finish without delaying reserved future jobs; Little's Law to size concurrency from target rate × session latency.</li></ol>
+<p>Academic spine: control theory (PID / MPC — re-solve a finite-horizon optimisation every tick as forecasts update), demand forecasting (time-series + contextual features), and online learning (contextual bandit over task classes: value gained per token).</p>
+<p>Books auto-studied in this line (curriculum, §6): <em>Designing Data-Intensive Applications</em> (Kleppmann — already Emma's standing study duty), <em>Site Reliability Engineering</em> (Google — quota, backfill, load shedding), <em>The Art of Computer Systems Performance Analysis</em> (Jain — measurement / AIMD), <em>Introduction to Queueing Theory</em>, TCP congestion-control canon (Jacobson 1988; BBR, Cardwell et al.).</p>
+<h3>2. The Core Rate Law</h3>
+<p>Sustained feasible rate is set by whichever window is tighter:</p>
+<p>r_sustain = min( C5 / 5h , C7 / 7d )</p>
+<p>But the optimal instantaneous dispatch rate is not constant — it is a <strong>catch-up pace to the 7-day deadline, clipped by the 5-hour bucket</strong>:</p>
+<p>r7_pace(t)  = (C7·(1−ε) − u7(t)) / (t7 − t)          # water-filling to reset r5_head(t)  = (C5·(1−ε) − u5(t)) / (t5 − t)          # what this window can still absorb, spread out r_auto(t)   = max( 0 , min( r7_pace(t), r5_head(t) ) − r_reserve(t) )</p>
+<ul><li>If the user has been idle, r7_pace rises — Auto Mode may spend faster, but r5_head still smooths it (leaky-bucket output, not a burst).</li><li>If the user has been heavy, r7_pace falls below the naive C7/7d line — Auto Mode throttles itself before the wall, not at it.</li><li>ε = safety margin (start 3–5%), learned per account from observed cap drift / measurement error; shrink ε as telemetry (exact utilisation + reset_at from the usage endpoint / <code>/usage</code>) proves reliable.</li><li><strong>Terminal window (t ≥ t7 − 5h):</strong> the 5h constraint stops being a constraint — set r_auto to exhaust min(C5 remaining, C7 remaining) together. Hitting the 5h limit <em>at</em> the 7d reset is optimal, not a failure.</li></ul>
+<h3>3. Behaviour Learning — Flow With the User</h3>
+<p>Auto work must never eat quota the human is about to need. Every tick (5 min), forecast human-directed demand for the next 5h:</p>
+<p>D̂(t, t+5h) = f(hour-of-day, day-of-week, recent session sizes &amp; lengths, active projects / deadlines, current live session burn rate)</p>
+<ul><li>Model: start as an empirical quantile model over Hector's own history (he is strongly nocturnal, bursty, multi-project, late-night CST peaks; directed sessions are large and arrive in clusters) — reserve = <strong>95th percentile</strong> of observed next-5h human demand in matching context buckets.</li><li>r_reserve(t) = D̂₉₅ / 5h while far from t7; the reserve <strong>decays to 0 across the terminal window</strong> (forecast human demand after reset belongs to the next week's quota).</li><li>Online update: every human session is a training sample (start time, tokens, model mix — Opus burns quota faster per token than Sonnet/Haiku — context depth, tool overhead). Forecast error feeds back: chronic over-reserve → lower quantile; any starvation event (human hits a limit because auto spent) → raise quantile + ε immediately, and log it as a PAIN entry. Starvation is the one unforgivable error of Auto Mode; waste is merely suboptimal.</li><li>This is MPC in practice: forecast → optimise to t7 → dispatch one tick → re-measure real u5/u7 → re-solve. Never trust an open-loop schedule.</li></ul>
+<h3>4. What the Surplus Burns On — Priority + Backfill</h3>
+<p>Dispatch only when r_auto(t) &gt; 0, strictly in this order, each job sized / checkpointed so it can pause at a window boundary:</p>
+<ol><li>Directed / URGENT human work — always preempts, never paced.</li><li>Pending designed repo tasks (all Dawn + Flow repos, organic auto-advance).</li><li>NO-PAIN filler: tests, verification runs, read-only audits, coverage closure, additive work on accumulated data.</li><li><strong>Book study (auto-learn):</strong> if the queue is dry and surplus remains, Auto Mode studies — the standing book curriculum (§1) plus books matched to live problems (e.g. queueing/control when pacing error is high, a domain book when a project stalls). Output is not raw reading: distilled canon notes + spot-check seeds into Dawn School, filed like any other work product. A dry queue with tokens remaining is a failure; a dry queue is converted into knowledge, never into make-work mutations.</li></ol>
+<p>Admission control, not retries: a 429 / limit signal is a capacity signal — on hit, AIMD multiplicative decrease (rate × 0.5), global cooldown across all workers on that account, exponential backoff with full jitter; on sustained clean windows, additive probing upward. Concurrency sized by Little's Law: N = r_auto × mean session latency, capped at 70% of observed safe concurrency.</p>
+<p>Multi-account: the board's existing chooseAccount becomes a pacing-aware choice — pick the account with the highest feasible r_auto(t) (most 7d value at risk of expiring × most 5h headroom), respecting lane rules (reserved fastest lane stays un-busted unless near reset, per Hector's standing account rules).</p>
+<h3>5. Falsifiable Predictions (the paper's test)</h3>
+<ol><li>Utilisation: u7(t7⁻)/C7 ≥ 0.95 per account per week, vs. bursty-baseline weeks.</li><li>Zero pre-terminal 5h blocks attributable to auto work over any rolling 4 weeks.</li><li>Zero human starvation events; reserve forecast MAPE improves week over week.</li><li>Filler value: tests/audits/book-notes produced per 1% of C7 is &gt; 0 and non-decreasing as the task-class bandit learns value-per-token.</li></ol>
+<p>If (1) fails, the rate law / ε is wrong. If (2)–(3) fail, the reserve model is wrong. Either failure is data, per THINK → DO → FIX → REPEAT — the controller parameters, not the doctrine, get revised.</p>
+<h3>6. Implementation Sketch (board)</h3>
+<ul><li>Telemetry loop (5 min): read per-account utilisation + reset times (usage endpoint / board account state); persist time series — this is also Hector's usage dataset, the paper's empirical base.</li><li>Controller: compute r_auto per account (§2–3); token-bucket dispatcher admits sessions against r_auto; leaky-bucket smoothing on starts.</li><li>Scheduler: priority queue with backfill check — a filler/book job starts only if its token estimate fits surplus AND it is checkpointable before the next forecast human peak.</li><li>Watchdogs: stall watchdog (zero-activity session → kill + redispatch raw), starvation watchdog (§3), dry-queue watchdog (surplus &gt; threshold + empty queue → inject book study).</li><li>Digest, not drip: weekly per-account report to Hector — utilisation achieved, blocks avoided, reserve accuracy, what the filler produced. His attention gate sees the summary, never the ticks.</li></ul>
+<h3>References (giants)</h3>
+<p>Jacobson (1988) Congestion Avoidance and Control · Cardwell et al., BBR · Google SRE Book, ch. Handling Overload / Borg · Kleppmann, Designing Data-Intensive Applications · Jain, The Art of Computer Systems Performance Analysis · Slurm backfill scheduling docs · Anthropic Help Center / Claude Code docs on 5-hour session + weekly limits (limits are token-weighted, model-dependent, shared across surfaces).</p>
+    <a class="backlink" href="/" data-back>← All papers</a>
+  </article>
+
+  <footer>
+    <p>Dawn Studio · Independent software.</p>
+    <div class="links">
+      <a class="footer-legal" href="https://dawnstudio.app/examples">Examples</a>
+      <a class="footer-legal" href="https://dawnstudio.app/changelog">Changelog</a>
+      <a class="footer-legal" href="https://dawnstudio.app/blog">Blog</a>
+      <a class="footer-legal" href="https://dawnstudio.app/canon">Canon</a>
+      <a class="footer-legal" href="https://dawnstudio.app/privacy.html">Privacy</a>
+      <a class="back-top" href="#top" aria-label="Back to top"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7 8 2.5 12.5 7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only">Back to top</span></a>
+    </div>
+  </footer>
+</div>
+<script>
+"use strict";
+/* Paper full texts are filed in their source language (Full-Text Law: the DB holds the whole,
+   surfaces may summarise). The toggle switches this page's chrome labels. */
+var LBL = {
+  en: {back:"← All papers", filed:"Full text as filed in the Dawn DB (source language)."},
+  zh: {back:"← 全部論文", filed:"全文照 Dawn DB 所存原文刊出（來源語言）。"}
+};
+var lang = "en";
+function apply(l){
+  lang = l;
+  document.documentElement.lang = l === "zh" ? "zh-Hant" : "en";
+  var bs = document.querySelectorAll(".lang-switch button");
+  for (var i=0;i<bs.length;i++) bs[i].setAttribute("aria-pressed", bs[i].getAttribute("data-lang")===l ? "true":"false");
+  var b = document.querySelector("[data-back]"); if (b) b.textContent = LBL[l].back;
+  var f = document.querySelector("[data-filed]"); if (f) f.textContent = LBL[l].filed;
+}
+var bs = document.querySelectorAll(".lang-switch button");
+for (var i=0;i<bs.length;i++) bs[i].addEventListener("click", function(){ apply(this.getAttribute("data-lang")); });
+apply(lang);
+
+</script>
+</body>
+</html>

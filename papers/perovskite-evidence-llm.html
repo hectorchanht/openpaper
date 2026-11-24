@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0a0a0b">
+<title>Evidence-grounded large language models guide perovskite solar cell design and optimization — OpenPaper 論文館</title>
+<meta name="description" content="OpenPaper 論文館卡：Evidence-grounded large language models guide perovskite solar cell design and optimization（能源／材料科學）。狀態：preprint — arXiv 預印本，未經同行評審。全文卡照 Content Pack v1 原文刊出，限制照錄。">
+<meta property="og:title" content="Evidence-grounded large language models guide perovskite solar cell design and optimization — OpenPaper 論文館">
+<meta property="og:description" content="OpenPaper 論文館卡：Evidence-grounded large language models guide perovskite solar cell design and optimization（能源／材料科學）。狀態：preprint — arXiv 預印本，未經同行評審。全文卡照 Content Pack v1 原文刊出，限制照錄。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://openpaper.dawnstudio.app/papers/perovskite-evidence-llm.html">
+<meta property="og:site_name" content="OpenPaper">
+<meta property="og:image" content="https://openpaper.dawnstudio.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="OpenPaper 論文館 — Dawn's open research-paper line">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Evidence-grounded large language models guide perovskite solar cell design and optimization — OpenPaper 論文館">
+<meta name="twitter:description" content="OpenPaper 論文館卡：Evidence-grounded large language models guide perovskite solar cell design and optimization（能源／材料科學）。狀態：preprint — arXiv 預印本，未經同行評審。全文卡照 Content Pack v1 原文刊出，限制照錄。">
+<meta name="twitter:image" content="https://openpaper.dawnstudio.app/og.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<style>
+:root{--bg:#0a0a0b;--panel:#131315;--panel2:#17171a;--line:#26262b;--text:#f5f2ee;--muted:#a8a29b;
+--accent:#e8590c;--accent-soft:#ff8a3d;--good:#69b56b;--radius:16px;
+--sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Noto Sans CJK TC",sans-serif;
+--serif:Georgia,"Times New Roman","Noto Serif TC","Noto Serif CJK TC",serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.55}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+a{color:var(--accent-soft)}
+header.utility{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-bottom:1px solid var(--line)}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:inherit;font-weight:700;letter-spacing:.02em;min-width:0}
+.brand img{width:40px;height:40px;flex:0 0 auto}
+.brand span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand .hall{color:var(--muted);font-weight:500;font-size:.85rem}
+.lang-switch{display:inline-flex;padding:3px;border:1px solid var(--line);border-radius:999px;background:var(--panel);flex:0 0 auto}
+.lang-switch button{min-width:48px;min-height:34px;padding:5px 12px;border:0;border-radius:999px;background:transparent;color:var(--muted);cursor:pointer;font:600 .88rem var(--sans)}
+.lang-switch button[aria-pressed="true"]{background:var(--text);color:var(--bg)}
+footer{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:26px 34px;border-top:1px solid var(--line);color:var(--muted);font-size:.875rem;margin-top:34px}
+footer p{margin:0}
+footer .links{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center}
+.footer-legal{color:var(--muted);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px}
+.back-top{text-decoration:none;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--line);border-radius:999px;color:var(--text);flex:0 0 auto}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hero{padding:38px 0 8px}
+.hero .mark{width:84px;height:84px}
+.hero h1{font-size:clamp(2.4rem,9vw,3.6rem);line-height:1.05;margin:.35em 0 .25em;font-weight:800;letter-spacing:-.01em}
+.hero .promise{font-family:var(--serif);font-size:clamp(1.12rem,4.6vw,1.4rem);line-height:1.55;color:#e8e2d9;max-width:36em}
+.hero .measure{margin-top:14px;color:var(--muted);font-size:1rem;max-width:38em}
+.hero .measure strong{color:var(--accent-soft);font-weight:700}
+.statusline{margin:26px 0 6px;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--good);border-radius:12px;padding:14px 18px;font-size:.98rem}
+.statusline .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--good);margin-right:9px}
+section.block{padding:20px 0 4px}
+section.block>h2{font-size:clamp(1.45rem,6vw,1.95rem);margin:16px 0 6px;line-height:1.2}
+section.block>p{color:#e8e2d9;max-width:38em}
+section.block>p.sub{color:var(--muted)}
+.paper{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin:0 0 16px}
+.paper .kicker{display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--accent-soft);font-size:.76rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700}
+.paper .status{margin-left:auto;text-transform:none;letter-spacing:0;font-weight:700;font-size:.78rem;border:1px solid var(--line);border-radius:999px;padding:3px 11px;color:var(--muted);max-width:100%}
+.paper .status.checking{color:#e8b34b;border-color:#5a4a22}
+.paper .status.peer{color:var(--good);border-color:#2c4630}
+.paper h3{font-size:1.28rem;margin:.5em 0 .35em;line-height:1.3}
+.paper h3 a{color:var(--text);text-decoration:none}
+.paper h3 a:hover{color:var(--accent-soft)}
+.paper p{color:var(--muted);margin:.3em 0 .8em}
+.paper .src{font-size:.9rem}
+.paper .read{display:inline-block;margin-top:2px;font-weight:700}
+article.full{padding:26px 0 4px}
+article.full h2{font-size:clamp(1.5rem,6vw,2.1rem);line-height:1.25;margin:.2em 0 .4em}
+article.full h3{font-size:1.3rem;margin:1.4em 0 .4em;line-height:1.3}
+article.full h4{font-size:1.12rem;margin:1.3em 0 .35em}
+article.full h5{font-size:1rem;margin:1.2em 0 .3em}
+article.full p,article.full li{font-family:var(--serif);font-size:1.06rem;line-height:1.75;color:#ece7de}
+article.full .meta{color:var(--muted);font-size:.95rem;font-family:var(--sans)}
+article.full code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;background:var(--panel2);padding:1px 5px;border-radius:5px}
+article.full pre{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto}
+article.full pre code{background:none;padding:0;font-size:.85rem;line-height:1.55}
+article.full blockquote{border-left:3px solid var(--accent);margin:1em 0;padding:2px 0 2px 16px}
+article.full blockquote p{color:var(--muted)}
+article.full hr{border:0;border-top:1px solid var(--line);margin:26px 0}
+.twrap{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;min-width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel2)}
+.claimbox{background:linear-gradient(180deg,#17130f,var(--panel));border:1px solid #3d2c1c;border-radius:var(--radius);padding:20px 22px;margin:18px 0}
+.claimbox h3{margin-top:0;font-family:var(--sans)}
+.claimbox p{font-family:var(--sans);font-size:1rem;line-height:1.65}
+.backlink{display:inline-block;margin-top:22px;font-weight:600}
+.sect{margin:20px 0}
+.sect h3{font-family:var(--sans);font-size:1.05rem;color:var(--accent-soft);letter-spacing:.04em;margin:0 0 6px}
+.sect p{margin-top:0}
+@media (max-width:640px){header.utility{min-height:56px}footer{align-items:flex-start;flex-direction:column}
+.paper{padding:17px}.paper .status{margin-left:0}}
+</style>
+</head>
+<body>
+<div class="wrap" id="top">
+  <header class="utility">
+    <a class="brand" href="/" aria-label="OpenPaper home">
+      <img src="/icon-192.png" alt="OpenPaper logo" width="40" height="40">
+      <span>OpenPaper</span> <span class="hall">· 論文館</span>
+    </a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-lang="zh" aria-pressed="true">繁中</button>
+    </div>
+  </header>
+
+  <article class="full">
+    <div class="kicker" style="color:var(--accent-soft);font-size:.76rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700">OpenPaper 論文館</div>
+    <h2>Evidence-grounded large language models guide perovskite solar cell design and optimization</h2>
+    <p class="meta">能源／材料科學 · 2026 年 10 月 31 日（v1）；11 月 3 日（v2） · 來源：arXiv:2611.00633 — <a href="https://arxiv.org/abs/2611.00633v1" rel="noopener">https://arxiv.org/abs/2611.00633v1</a> · <span class="status" style="border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:.8rem">preprint — arXiv 預印本，未經同行評審</span></p>
+    <p class="meta" data-filed></p>
+<div class="sect"><h3>一句講晒</h3><p>一個專讀太陽能論文嘅 AI，幫科學家揀咗一隻更好嘅材料，做出嚟嘅太陽能板真係勁過專家揀嗰隻。</p></div>
+<div class="sect"><h3>白話版</h3><p>鈣鈦礦（perovskite）係一種新一代太陽能材料，平、易造，但點樣配料先至最好，組合多到試唔晒。呢班研究者做咗一個專門嘅 AI 助手，叫 OpenPerov：佢哋將 4,532 篇鈣鈦礦論文拆解成一條條「證據記錄」——邊個實驗、點做、見到乜、點解釋——餵畀 AI 學，唔係淨係背答案，而係學識點樣用證據諗嘢。然後佢哋出咗一份 800 題嘅考卷（PSM-Bench）考 13 個 AI 系統，OpenPerov 攞第一。最關鍵嘅一步係落手做實驗：要設計一層好薄嘅分子接觸層，AI 揀咗用「鉀」嗰款，人類專家就鍾意「鈉」嗰款。兩款都真係整出嚟對比，AI 揀嗰款太陽能效率達到 27.05%，高過專家嗰款，而且喺 85 度高溫擺咗 1,000 小時之後，仲保留到九成七效能。就好似一個廚師唔係背熟食譜，而係真係睇過四千幾次煮食紀錄，學識點解要咁調味，最後揀隻調味料仲贏咗老行家。</p></div>
+<div class="sect"><h3>深入少少</h3><p>方法：將文獻重構成 expert-calibrated evidence records（連結實驗策略、對照、觀察同機制解釋），用 structured-evidence adaptation 訓練出 OpenPerov Flash（閉卷答題）；Pro 版再加檢索證據修訂答案，Scientific Mastery 分數由 87.6 升至 89.1。實驗驗證係 self-assembled monolayer（SAM）設計：AI 揀嘅 K analogue（BCPCz–TMPS–K）對專家偏好嘅 Na analogue，喺相同製作條件下，16 粒器件平均效率 26.69% 對 25.24%，冠軍器件 27.05%（反向掃描）；85°C 黑暗熱老化 1,000 小時後保留 96.74%。
+<strong>限制：</strong> preprint，未經同行評審。實驗驗證只得一個設計案例、一種材料位置；27.05% 係細面積實驗室器件嘅數字，唔係量產組件；1,000 小時老化係黑暗儲存條件，唔等於真實發電環境（有光、有濕氣、晝夜溫差）下嘅壽命。AI「贏專家」只限於今次呢一個選擇題，唔代表全面取代材料科學家。</p></div>
+<div class="sect"><h3>限制（老實講）</h3><p>preprint，未經同行評審。實驗驗證只得一個設計案例、一種材料位置；27.05% 係細面積實驗室器件嘅數字，唔係量產組件；1,000 小時老化係黑暗儲存條件，唔等於真實發電環境（有光、有濕氣、晝夜溫差）下嘅壽命。AI「贏專家」只限於今次呢一個選擇題，唔代表全面取代材料科學家。</p></div>
+<div class="sect"><h3>未來概念卡</h3><p>未來概念卡：〈咩係鈣鈦礦太陽能〉、〈效率點樣計〉、〈AI 點樣讀論文〉。觸及嘅真實世界嘢：屋頂太陽能板同電費——太陽能越平越耐用，發電成本就越低。</p></div>
+
+    <a class="backlink" href="/" data-back>← All papers</a>
+  </article>
+
+  <footer>
+    <p>Dawn Studio · Independent software.</p>
+    <div class="links">
+      <a class="footer-legal" href="https://dawnstudio.app/examples">Examples</a>
+      <a class="footer-legal" href="https://dawnstudio.app/changelog">Changelog</a>
+      <a class="footer-legal" href="https://dawnstudio.app/blog">Blog</a>
+      <a class="footer-legal" href="https://dawnstudio.app/canon">Canon</a>
+      <a class="footer-legal" href="https://dawnstudio.app/privacy.html">Privacy</a>
+      <a class="back-top" href="#top" aria-label="Back to top"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7 8 2.5 12.5 7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only">Back to top</span></a>
+    </div>
+  </footer>
+</div>
+<script>
+"use strict";
+/* Paper full texts are filed in their source language (Full-Text Law: the DB holds the whole,
+   surfaces may summarise). The toggle switches this page's chrome labels. */
+var LBL = {
+  en: {back:"← All papers", filed:"Full text as filed in the Dawn DB (source language)."},
+  zh: {back:"← 全部論文", filed:"全文照 Dawn DB 所存原文刊出（來源語言）。"}
+};
+var lang = "zh";
+function apply(l){
+  lang = l;
+  document.documentElement.lang = l === "zh" ? "zh-Hant" : "en";
+  var bs = document.querySelectorAll(".lang-switch button");
+  for (var i=0;i<bs.length;i++) bs[i].setAttribute("aria-pressed", bs[i].getAttribute("data-lang")===l ? "true":"false");
+  var b = document.querySelector("[data-back]"); if (b) b.textContent = LBL[l].back;
+  var f = document.querySelector("[data-filed]"); if (f) f.textContent = LBL[l].filed;
+}
+var bs = document.querySelectorAll(".lang-switch button");
+for (var i=0;i<bs.length;i++) bs[i].addEventListener("click", function(){ apply(this.getAttribute("data-lang")); });
+apply(lang);
+
+</script>
+</body>
+</html>

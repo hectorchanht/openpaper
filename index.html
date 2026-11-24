@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0a0a0b">
+<title>OpenPaper 論文館 — Dawn's open research-paper line</title>
+<meta name="description" content="OpenPaper is Dawn's open research-paper line: papers, not blog posts — each carries its evidence, sources, hedges and verification status. Paper №1: the auto-grading lifecycle. Free, open, living.">
+<meta property="og:title" content="OpenPaper 論文館 — Dawn's open research-paper line">
+<meta property="og:description" content="Papers, not posts: evidence, sources, hedges and verification status on every paper. Paper №1 — the auto-grading lifecycle — in founding/verification.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://openpaper.dawnstudio.app/">
+<meta property="og:site_name" content="OpenPaper">
+<meta property="og:image" content="https://openpaper.dawnstudio.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="OpenPaper 論文館 — Dawn sun rising over an open paper">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OpenPaper 論文館 — Dawn's open research-paper line">
+<meta name="twitter:description" content="Papers, not posts: evidence, sources, hedges and verification status on every paper.">
+<meta name="twitter:image" content="https://openpaper.dawnstudio.app/og.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<style>
+:root{--bg:#0a0a0b;--panel:#131315;--panel2:#17171a;--line:#26262b;--text:#f5f2ee;--muted:#a8a29b;
+--accent:#e8590c;--accent-soft:#ff8a3d;--good:#69b56b;--radius:16px;
+--sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Noto Sans CJK TC",sans-serif;
+--serif:Georgia,"Times New Roman","Noto Serif TC","Noto Serif CJK TC",serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.55}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+a{color:var(--accent-soft)}
+header.utility{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-bottom:1px solid var(--line)}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:inherit;font-weight:700;letter-spacing:.02em;min-width:0}
+.brand img{width:40px;height:40px;flex:0 0 auto}
+.brand span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand .hall{color:var(--muted);font-weight:500;font-size:.85rem}
+.lang-switch{display:inline-flex;padding:3px;border:1px solid var(--line);border-radius:999px;background:var(--panel);flex:0 0 auto}
+.lang-switch button{min-width:48px;min-height:34px;padding:5px 12px;border:0;border-radius:999px;background:transparent;color:var(--muted);cursor:pointer;font:600 .88rem var(--sans)}
+.lang-switch button[aria-pressed="true"]{background:var(--text);color:var(--bg)}
+footer{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:26px 34px;border-top:1px solid var(--line);color:var(--muted);font-size:.875rem;margin-top:34px}
+footer p{margin:0}
+footer .links{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center}
+.footer-legal{color:var(--muted);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px}
+.back-top{text-decoration:none;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--line);border-radius:999px;color:var(--text);flex:0 0 auto}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hero{padding:38px 0 8px}
+.hero .mark{width:84px;height:84px}
+.hero h1{font-size:clamp(2.4rem,9vw,3.6rem);line-height:1.05;margin:.35em 0 .25em;font-weight:800;letter-spacing:-.01em}
+.hero .promise{font-family:var(--serif);font-size:clamp(1.12rem,4.6vw,1.4rem);line-height:1.55;color:#e8e2d9;max-width:36em}
+.hero .measure{margin-top:14px;color:var(--muted);font-size:1rem;max-width:38em}
+.hero .measure strong{color:var(--accent-soft);font-weight:700}
+.statusline{margin:26px 0 6px;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--good);border-radius:12px;padding:14px 18px;font-size:.98rem}
+.statusline .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--good);margin-right:9px}
+section.block{padding:20px 0 4px}
+section.block>h2{font-size:clamp(1.45rem,6vw,1.95rem);margin:16px 0 6px;line-height:1.2}
+section.block>p{color:#e8e2d9;max-width:38em}
+section.block>p.sub{color:var(--muted)}
+.paper{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin:0 0 16px}
+.paper .kicker{display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--accent-soft);font-size:.76rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700}
+.paper .status{margin-left:auto;text-transform:none;letter-spacing:0;font-weight:700;font-size:.78rem;border:1px solid var(--line);border-radius:999px;padding:3px 11px;color:var(--muted);max-width:100%}
+.paper .status.checking{color:#e8b34b;border-color:#5a4a22}
+.paper .status.peer{color:var(--good);border-color:#2c4630}
+.paper h3{font-size:1.28rem;margin:.5em 0 .35em;line-height:1.3}
+.paper h3 a{color:var(--text);text-decoration:none}
+.paper h3 a:hover{color:var(--accent-soft)}
+.paper p{color:var(--muted);margin:.3em 0 .8em}
+.paper .src{font-size:.9rem}
+.paper .read{display:inline-block;margin-top:2px;font-weight:700}
+article.full{padding:26px 0 4px}
+article.full h2{font-size:clamp(1.5rem,6vw,2.1rem);line-height:1.25;margin:.2em 0 .4em}
+article.full h3{font-size:1.3rem;margin:1.4em 0 .4em;line-height:1.3}
+article.full h4{font-size:1.12rem;margin:1.3em 0 .35em}
+article.full h5{font-size:1rem;margin:1.2em 0 .3em}
+article.full p,article.full li{font-family:var(--serif);font-size:1.06rem;line-height:1.75;color:#ece7de}
+article.full .meta{color:var(--muted);font-size:.95rem;font-family:var(--sans)}
+article.full code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;background:var(--panel2);padding:1px 5px;border-radius:5px}
+article.full pre{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto}
+article.full pre code{background:none;padding:0;font-size:.85rem;line-height:1.55}
+article.full blockquote{border-left:3px solid var(--accent);margin:1em 0;padding:2px 0 2px 16px}
+article.full blockquote p{color:var(--muted)}
+article.full hr{border:0;border-top:1px solid var(--line);margin:26px 0}
+.twrap{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;min-width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel2)}
+.claimbox{background:linear-gradient(180deg,#17130f,var(--panel));border:1px solid #3d2c1c;border-radius:var(--radius);padding:20px 22px;margin:18px 0}
+.claimbox h3{margin-top:0;font-family:var(--sans)}
+.claimbox p{font-family:var(--sans);font-size:1rem;line-height:1.65}
+.backlink{display:inline-block;margin-top:22px;font-weight:600}
+.sect{margin:20px 0}
+.sect h3{font-family:var(--sans);font-size:1.05rem;color:var(--accent-soft);letter-spacing:.04em;margin:0 0 6px}
+.sect p{margin-top:0}
+@media (max-width:640px){header.utility{min-height:56px}footer{align-items:flex-start;flex-direction:column}
+.paper{padding:17px}.paper .status{margin-left:0}}
+</style>
+</head>
+<body>
+<div class="wrap" id="top">
+  <header class="utility">
+    <a class="brand" href="/" aria-label="OpenPaper home">
+      <img src="/icon-192.png" alt="OpenPaper logo" width="40" height="40">
+      <span>OpenPaper</span> <span class="hall" data-i18n="hall">· 論文館</span>
+    </a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="zh" aria-pressed="false">繁中</button>
+    </div>
+  </header>
+
+  <div class="hero">
+    <img class="mark" src="/icon-192.png" alt="OpenPaper mark — Dawn sun over an open paper">
+    <h1>OpenPaper</h1>
+    <p class="promise" data-i18n="promise"></p>
+    <p class="measure" data-i18n="measure"></p>
+  </div>
+
+  <div class="statusline"><span class="dot" aria-hidden="true"></span><span data-i18n="status"></span></div>
+
+  <section class="block">
+    <h2 data-i18n="goalT"></h2>
+    <p data-i18n="goalB"></p>
+  </section>
+
+  <section class="block">
+    <h2 data-i18n="roadT"></h2>
+    <p data-i18n="roadB"></p>
+  </section>
+
+  <section class="block">
+    <h2 data-i18n="dawnT"></h2>
+    <p class="sub" data-i18n="dawnSub"></p>
+    <div id="dawnPapers"></div>
+  </section>
+
+  <section class="block">
+    <h2 data-i18n="packT"></h2>
+    <p class="sub" data-i18n="packSub"></p>
+    <div id="packPapers"></div>
+  </section>
+
+  <section class="block">
+    <h2 data-i18n="aboutT"></h2>
+    <p data-i18n="aboutB"></p>
+  </section>
+
+  <footer>
+    <p data-i18n="footStudio"></p>
+    <div class="links">
+      <a class="footer-legal" href="https://dawnstudio.app/examples">Examples</a>
+      <a class="footer-legal" href="https://dawnstudio.app/changelog">Changelog</a>
+      <a class="footer-legal" href="https://dawnstudio.app/blog">Blog</a>
+      <a class="footer-legal" href="https://dawnstudio.app/canon">Canon</a>
+      <a class="footer-legal" href="https://dawnstudio.app/privacy.html">Privacy</a>
+      <a class="back-top" href="#top" aria-label="Back to top"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7 8 2.5 12.5 7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only">Back to top</span></a>
+    </div>
+  </footer>
+</div>
+<script>
+"use strict";
+var I18N = {"en": {"hall": "· 論文館", "promise": "Dawn's open research-paper line — papers, not posts.", "measure": "A paper here is <strong>not a blog post</strong>: it carries its evidence, its sources, its hedges, and its verification status. Free, open, and living — updated as the work verifies.", "status": "OpenPaper 論文館 v1 is live. Paper №1 — the auto-grading lifecycle — is in founding / verification: no claim before material.", "goalT": "The end goal", "goalB": "Every piece of original Dawn work, written up as a paper the world can read, cite and check — and every paper kept honest by construction: evidence attached, sources cited, hedges visible, verification status on the cover. 提要 (the summary) is the admission ticket, never a substitute: the Dawn DB holds every paper in full text.", "roadT": "Roadmap", "roadB": "1 · Full-Text Law — all OpenPaper materials (and 我地嘅經， the classics) live in the Dawn DB in full text. &nbsp; 2 · Publish split — pure content ships as soon as it is SEO-ready; app surfaces ship only when all-rounded. &nbsp; 3 · Every paper passes the 精選 seven-axis rubric + fact-check gate before public release; unverified claims stay labelled 查證中 inside the paper. &nbsp; 4 · Paper №1's claim matures as the auto-grader ships and verifies.", "dawnT": "Dawn papers — original work", "dawnSub": "Written by Dawn, from Dawn's own work. Full texts filed in the Dawn DB; this hall is the reading surface.", "packT": "Content Pack v1 — eight frontier papers, honestly carded", "packSub": "Eight papers from October–November 2026 across eight fields, each checked by hand against its arXiv / DOI abstract page. 講得白，唔等於講得大 — what a paper did not prove is stated plainly on its card. Preprints are labelled preprints.", "aboutT": "About — the Full-Text Law", "aboutB": "All OpenPaper materials live in the Dawn DB in FULL TEXT — and the same holds for 我地嘅經， the classics (Meditations is already filed in full; the Tao Te Ching full text is still owed, and stays marked owed until it is in). Papers cite their full texts; surfaces may summarise, the DB holds the whole. OpenPaper is part of the OpenSchool family, fed one-way from the Dawn DB like every Dawn surface.", "read": "Read the full text →", "footStudio": "Dawn Studio · Independent software.", "srcP": "Source: ", "groupDawn": "Dawn paper", "groupPack": "Content Pack v1"}, "zh": {"hall": "· 論文館", "promise": "Dawn 嘅開放論文線 —— 係論文，唔係 blog post。", "measure": "呢度嘅論文<strong>唔係 blog post</strong>：佢帶住自己嘅證據、來源、保留語句（hedges）同查證狀態。免費、開放、活嘅 —— 隨住工作驗證到而更新。", "status": "OpenPaper 論文館 v1 已上線。論文 №1 —— 自動評級生命週期 —— 處於立派／驗證階段：未有實物之前唔 claim。", "goalT": "最終目標", "goalB": "將 Dawn 每一件原創工作寫成論文，畀全世界讀、引用、查證 —— 而每篇論文喺結構上就要誠實：證據附齊、來源列明、保留語句可見、查證狀態寫喺封面。提要只係入場券，永遠唔係替代品：Dawn DB 存住每一篇嘅全文。", "roadT": "路線圖", "roadB": "1 · 全文法 —— 所有 OpenPaper 材料（同我地嘅經）都以全文存入 Dawn DB。&nbsp; 2 · 發佈分工 —— 純內容 SEO-ready 就即出；app 版面要全方位成熟先出。&nbsp; 3 · 每篇論文公開前要過「精選」七軸評分 + fact-check 閘；未查證嘅 claim 喺篇文入面保持標明查證中。&nbsp; 4 · 論文 №1 嘅 claim 隨住 auto-grader 出貨同驗證而成熟。", "dawnT": "Dawn 論文 —— 原創工作", "dawnSub": "由 Dawn 寫、嚟自 Dawn 自己嘅工作。全文存喺 Dawn DB；論文館係閱讀面。", "packT": "Content Pack v1 —— 八篇前沿論文，誠實卡", "packSub": "八篇 2026 年 10 至 11 月嘅論文，橫跨八個領域，每篇都經人手對過 arXiv／DOI 摘要頁。講得白，唔等於講得大 —— 論文冇證明到嘅嘢，會喺張卡度老實寫明。預印本就標明係預印本。", "aboutT": "關於 —— 全文法", "aboutB": "所有 OpenPaper 材料都以全文存入 Dawn DB —— 我地嘅經都一樣（《沉思錄》全文已入庫；《道德經》全文仲欠住，未入庫之前會一直標明欠住）。論文引用佢哋嘅全文；版面可以撮要，DB 存全份。OpenPaper 係 OpenSchool 家族一員，同所有 Dawn 版面一樣，由 Dawn DB 單向餵料。", "read": "睇全文 →", "footStudio": "Dawn Studio · 獨立軟件。", "srcP": "來源：", "groupDawn": "Dawn 論文", "groupPack": "Content Pack v1"}};
+var DAWN = [{slug:"auto-grading-lifecycle",te:"Paper №1 — The Auto-Grading Lifecycle",tz:"論文 №1 — 自動評級生命週期",se:"Paper №1 · 查證中 — founding / verification",sz:"論文 №1 · 查證中（立派／驗證中）",sc:"checking",sue:"A corpus that promotes and demotes its own entries by a PageRank-lineage score blended with trust seeds, editor curation and public handpicks. The scoring mechanics are copied from the giants; the promote/demote lifecycle itself is Dawn's original contribution — and the claim matures only as the grader ships and verifies.",suz:"一個互連文件庫，用 PageRank 血統嘅分數（混合信任種子、編輯精選同公眾 handpick）自己升降自己嘅條目。評分機制抄自巨人；升／降生命週期本身係 Dawn 嘅原創貢獻——而個 claim 要等 grader 出貨驗證先成熟。",src:"Source full text: PageRank 評級機制研究 (Dawn DB, filed in full)"},{slug:"canon-pipeline",te:"Canon Pipeline Benchmarks — From Raw Corpus to Canon",tz:"Canon Pipeline 最強者研究 — 由原始語料到 Canon",se:"全文研究報告 · Full-text research report",sz:"全文研究報告",sc:"",sue:"No single tradition does all seven stages well. The strongest composite — Forte, Luhmann, Matuschak, Locke, the Siku quanshu editors, Karpathy, Wikipedia's Featured Article gate — is the research base for OpenPaper's 精選 seven-axis rubric and fact-check gate.",suz:"冇一個傳統做得好晒七個階段。最強複合體——Forte、Luhmann、Matuschak、Locke、四庫館臣、Karpathy、Wikipedia 特色條目閘——就係 OpenPaper「精選」七軸評分同 fact-check 閘嘅研究底座。",src:"Filed in full in the Dawn DB (vault, OpenPaper shelf)"},{slug:"agent-board-auto-mode",te:"Agent Board Auto Mode — Dual-Window Pacing",tz:"Agent Board Auto Mode — 雙窗 Pacing 論文",se:"Working Paper v0.1 · 2026-11-22",sz:"Working Paper v0.1 · 2026-11-22",sc:"",sue:"Claude accounts live under two nested quotas — a rolling 5-hour cap inside a fixed 7-day cap. Auto Mode paces work to land at 98% of the 7-day cap without ever tripping the 5-hour wall early: token buckets, MPC, a learned reserve for human demand, and no-pain backfill (book study included).",suz:"Claude 帳戶有兩層配額——5 小時滾動上限包住 7 日固定上限。Auto Mode 將工作 pacing 到啱啱用盡 7 日配額嘅 98%，而永遠唔提早撞 5 小時牆：token bucket、MPC、學返嚟嘅人類需求儲備、同 no-pain backfill（包括自動讀書）。",src:"Dawn Studio working paper — the Agent Board's default mode specification"}];
+var PACK = [{slug:"ai-rewrites-own-weights",te:"Language Models Can Rewrite Their Own Weights",tz:"AI 自己改自己",se:"preprint — arXiv 預印本，未經同行評審",sz:"preprint — arXiv 預印本，未經同行評審",sc:"",sue:"A 27B model, given its own weights, activations and errors — with gradients, optimizers and GPUs blocked — edited itself and gained +6.6 points on 490 unseen maths problems. Preprint: one model family, one task, human-built sandbox.",suz:"一個 AI 程式第一次唔使人類再訓練，自己諗辦法改好自己個腦，仲真係變叻咗。",src:"arXiv:2611.21885 — https://arxiv.org/abs/2611.21885v2"},{slug:"quantum-correlated-errors",te:"Discovering correlated error mechanisms: data-driven augmentation of detector error models improving decoding",tz:"量子電腦學識認自己嘅錯",se:"preprint — arXiv 預印本，未經同行評審",sz:"preprint — arXiv 預印本，未經同行評審",sc:"",sue:"Instead of guessing a quantum computer's error handbook from theory, feed the decoder the machine's real run data and let it discover the correlated errors the handbook missed. Simulations: error suppression +20%; on Google's published chip data, +9%.",suz:"量子電腦成日計錯數，科學家教識部機睇自己錯喺邊啲位，將錯誤大幅減少。",src:"arXiv:2611.06605 — https://arxiv.org/abs/2611.06605v1（Riverlane 團隊）"},{slug:"fusion-lh-threshold",te:"Theory for the power threshold of the L–H transition in tokamaks",tz:"核融合嗰道「門檻」終於有公式",se:"已刊登 — Physical Review Letters（同行評審）",sz:"已刊登 — Physical Review Letters（同行評審）",sc:"peer",sue:"For 40 years nobody could fully explain the tokamak L–H power threshold. EPFL's flux-driven simulations yield the first unified theory — one formula for the threshold, the magnetic-direction asymmetry and the optimum density. ITER prediction: ≥43 MW needed, 73 MW available.",suz:"核融合爐入面有一道神秘門檻，一過咗就慳一半能量，科學家等咗 40 年，終於寫得出點解同點計。",src:"Physical Review Letters 137, 205101，DOI: 10.1103/rw25-wy15；arXiv:2605.00624 — https://arxiv.org/abs/2605.00624v3（EPFL 瑞士等離子體中心）"},{slug:"perovskite-evidence-llm",te:"Evidence-grounded large language models guide perovskite solar cell design and optimization",tz:"AI 揀料揀贏人類專家（太陽能）",se:"preprint — arXiv 預印本，未經同行評審",sz:"preprint — arXiv 預印本，未經同行評審",sc:"",sue:"OpenPerov, an LLM trained on 4,532 perovskite papers restructured as evidence records, out-scored 12 rival systems — then picked a potassium contact layer over the experts' sodium pick. Built for real: 27.05% champion efficiency vs the experts' lower result, 96.7% retained after 1,000 h at 85 °C.",suz:"一個專讀太陽能論文嘅 AI，幫科學家揀咗一隻更好嘅材料，做出嚟嘅太陽能板真係勁過專家揀嗰隻。",src:"arXiv:2611.00633 — https://arxiv.org/abs/2611.00633v1"},{slug:"car-t-microbiota",te:"CD19-CAR T-cell therapy reshapes the host–microbiota immune axis in autoimmune diseases",tz:"改完免疫系統，連腸入面啲菌都變埋",se:"preprint — bioRxiv 預印本，未經同行評審",sz:"preprint — bioRxiv 預印本，未經同行評審",sc:"",sue:"Tracking 20 autoimmune patients through CD19 CAR T-cell therapy: resetting the immune system also reshaped the gut microbiota and the body's antibody watch over it — and pre-treatment host–microbe patterns tracked later relapse. Small cohort, associations not causation.",suz:"一種將病人免疫系統「重啟」嘅新療法，唔單止醫到自身免疫病，仲會改埋腸道入面成個細菌世界同身體對佢哋嘅態度。",src:"bioRxiv，DOI: 10.64898/2026.11.11.765834 — https://www.biorxiv.org/content/10.64898/2026.11.11.765834v1"},{slug:"sleep-memory-interneurons",te:"An acetylcholine-inhibited sleep-active hippocampal interneuron orchestrates memory consolidation",tz:"瞓覺嗰陣，腦入面有一班「夜更守衛」幫你記嘢",se:"已刊登 — Neuron（同行評審）",sz:"已刊登 — Neuron（同行評審）",sc:"peer",sue:"A previously unknown class of hippocampal interneurons, braked by acetylcholine via Chrm2, wakes only in deep NREM sleep and conducts the ripples that file the day's memories. Silencing them in mice breaks spatial and social memory — while sleep itself still looks normal.",suz:"你瞓覺嗰陣，腦入面有一小班特別嘅細胞先至開工，佢哋負責將你日頭學嘅嘢「存檔」變成長期記憶；佢哋唔開工，你瞓幾多都記唔實。",src:"Neuron（2026），DOI: 10.1016/j.neuron.2026.09.031 — https://doi.org/10.1016/j.neuron.2026.09.031（中國科學院神經科學研究所團隊）"},{slug:"cold-gas-giant",te:"Magellan PFS Discovery of a Cold Gas Giant Exoplanet Likely Formed by a Gas Disk Gravitational Instability",tz:"一粒唔應該存在嘅行星",se:"已刊登 — The Astrophysical Journal Letters",sz:"已刊登 — The Astrophysical Journal Letters",sc:"peer",sue:"A ~5 Jupiter-mass gas giant orbits a star only 0.6× the Sun's mass, on a 19.3-year eccentric orbit — too big to have been built there by core accretion, say the discoverers; they argue it collapsed directly from the gas disk. The formation story is inference, and contested.",suz:"天文學家搵到一粒好大嘅行星，圍住一粒好細嘅星轉——按照教科書嘅講法，佢根本冇可能喺嗰度形成。",src:"arXiv:2611.16032 — https://arxiv.org/abs/2611.16032"},{slug:"rescene-earth-system",te:"Rescene-ESM: an Earth system model built around a frozen AI weather model",tz:"一部一日跑一千年氣候嘅地球模擬器",se:"preprint — arXiv 預印本，未經同行評審",sz:"preprint — arXiv 預印本，未經同行評審",sc:"",sue:"A frozen AI weather model, coupled to physical ocean, sea-ice, land, river and carbon components, runs ~1,000 years of climate per day on one GPU — and El Niño emerges only once the right physical pieces are added. Preprint, not yet independently reproduced.",suz:"科學家將一個 AI 天氣程式鑲入一個地球模擬器，快到一日可以跑完一千年氣候，仲跑得出厄爾尼諾。",src:"arXiv:2611.11066 — https://arxiv.org/abs/2611.11066"}];
+var lang = "en";
+try { lang = localStorage.getItem("openpaper-lang") || "en"; } catch(e){}
+if (lang !== "zh") lang = "en";
+function T(){ return I18N[lang]; }
+function renderCards(host, list, groupKey){
+  host.innerHTML = "";
+  list.forEach(function(p){
+    var card = document.createElement("article"); card.className = "paper";
+    var kick = document.createElement("div"); kick.className = "kicker";
+    var g = document.createElement("span"); g.textContent = T()[groupKey];
+    var st = document.createElement("span"); st.className = "status" + (p.sc ? " " + p.sc : "");
+    st.textContent = lang === "zh" ? p.sz : p.se;
+    kick.appendChild(g); kick.appendChild(st); card.appendChild(kick);
+    var h = document.createElement("h3");
+    var a = document.createElement("a"); a.href = "/papers/" + p.slug + ".html";
+    a.textContent = lang === "zh" ? p.tz : p.te;
+    h.appendChild(a); card.appendChild(h);
+    var sum = document.createElement("p"); sum.textContent = lang === "zh" ? p.suz : p.sue;
+    card.appendChild(sum);
+    var src = document.createElement("p"); src.className = "src"; src.style.color = "var(--muted)";
+    src.textContent = p.src.indexOf("http") === 0 || p.src.indexOf("Source") === 0 || p.src.indexOf("Filed") === 0 || p.src.indexOf("Dawn") === 0 ? p.src : (T().srcP + p.src);
+    card.appendChild(src);
+    var rd = document.createElement("a"); rd.className = "read"; rd.href = "/papers/" + p.slug + ".html";
+    rd.textContent = T().read; card.appendChild(rd);
+    host.appendChild(card);
+  });
+}
+function render(){
+  document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
+  var bs = document.querySelectorAll(".lang-switch button");
+  for (var i=0;i<bs.length;i++) bs[i].setAttribute("aria-pressed", bs[i].getAttribute("data-lang")===lang ? "true":"false");
+  var els = document.querySelectorAll("[data-i18n]");
+  for (var j=0;j<els.length;j++){ var k = els[j].getAttribute("data-i18n"); if (T()[k]) els[j].innerHTML = T()[k]; }
+  renderCards(document.getElementById("dawnPapers"), DAWN, "groupDawn");
+  renderCards(document.getElementById("packPapers"), PACK, "groupPack");
+}
+var bs = document.querySelectorAll(".lang-switch button");
+for (var i=0;i<bs.length;i++) bs[i].addEventListener("click", function(){
+  lang = this.getAttribute("data-lang");
+  try { localStorage.setItem("openpaper-lang", lang); } catch(e){}
+  render();
+});
+render();
+</script>
+</body>
+</html>
